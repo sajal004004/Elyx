@@ -45,14 +45,24 @@ export default function Timeline({ timeline, onEventClick }: TimelineProps) {
               variant="outline" 
               size="sm" 
               data-testid="timeline-filter"
-              onClick={() => console.log('Filter functionality coming soon')}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Filter functionality coming soon');
+                alert('Filter functionality coming soon');
+              }}
             >
               Filter
             </Button>
             <Button 
               size="sm" 
               data-testid="timeline-export"
-              onClick={() => console.log('Export functionality coming soon')}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Export functionality coming soon');
+                alert('Export functionality coming soon');
+              }}
             >
               Export
             </Button>

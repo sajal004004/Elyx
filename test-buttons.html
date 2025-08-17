@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Test</title>
+    <script>
+        // Simple test to identify non-working buttons
+        function testAllButtons() {
+            const buttons = document.querySelectorAll('button');
+            console.log(`Found ${buttons.length} buttons`);
+            
+            buttons.forEach((button, index) => {
+                const testId = button.getAttribute('data-testid');
+                const hasOnClick = button.onclick !== null || button.getAttribute('onclick');
+                const hasEventListener = button._listeners || false;
+                
+                console.log(`Button ${index}: ${testId || 'no-testid'} - onClick: ${hasOnClick} - Text: ${button.textContent.trim()}`);
+            });
+        }
+        
+        window.addEventListener('load', testAllButtons);
+    </script>
+</head>
+<body>
+    <p>This is a test file to check button functionality. Open browser console to see results.</p>
+</body>
+</html>

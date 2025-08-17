@@ -46,7 +46,12 @@ export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyti
               variant="outline" 
               className="w-full text-sm" 
               data-testid="view-all-team-members"
-              onClick={() => console.log('Team members view coming soon')}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Team members view coming soon');
+                alert('Team members view coming soon');
+              }}
             >
               View all team members
             </Button>
@@ -86,7 +91,12 @@ export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyti
                     variant="link" 
                     className="text-xs p-0 h-auto" 
                     data-testid={`decision-${decision.id}-why`}
-                    onClick={() => console.log(`Decision reasoning: ${decision.reasoning}`)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      console.log(`Decision reasoning: ${decision.reasoning}`);
+                      alert(`Decision reasoning: ${decision.reasoning}`);
+                    }}
                   >
                     Why this decision?
                   </Button>

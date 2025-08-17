@@ -89,7 +89,10 @@ export default function Dashboard() {
                   placeholder="Search conversations..."
                   className="w-64 pl-10"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    console.log('Search term:', e.target.value);
+                  }}
                   data-testid="search-conversations"
                 />
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
@@ -98,7 +101,12 @@ export default function Dashboard() {
                 variant="ghost" 
                 size="sm" 
                 data-testid="notifications"
-                onClick={() => console.log('Notifications feature coming soon')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('Notifications feature coming soon');
+                  alert('Notifications feature coming soon');
+                }}
               >
                 <Bell className="h-4 w-4" />
               </Button>
