@@ -54,8 +54,8 @@ A comprehensive web application that visualizes Rohan Patel's 8-month health tra
 ### Installation
 ```bash
 # Clone the repository
-git clone [repository-url]
-cd health-journey-app
+git clone https://github.com/sajal004004/Elyx.git
+cd Elyx
 
 # Install dependencies
 npm install
