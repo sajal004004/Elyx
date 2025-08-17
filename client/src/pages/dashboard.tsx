@@ -23,7 +23,7 @@ export default function Dashboard() {
   });
 
   // Fetch and parse chat data
-  const { data: chatData, isLoading: chatLoading } = useQuery({
+  const { data: chatData, isLoading: chatLoading } = useQuery<{ data: string }>({
     queryKey: ["/api/chat-data"],
   });
 
@@ -94,7 +94,12 @@ export default function Dashboard() {
                 />
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               </div>
-              <Button variant="ghost" size="sm" data-testid="notifications">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                data-testid="notifications"
+                onClick={() => console.log('Notifications feature coming soon')}
+              >
                 <Bell className="h-4 w-4" />
               </Button>
             </div>

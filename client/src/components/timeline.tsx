@@ -41,10 +41,19 @@ export default function Timeline({ timeline, onEventClick }: TimelineProps) {
         <div className="flex items-center justify-between">
           <CardTitle>8-Month Health Journey Timeline</CardTitle>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm" data-testid="timeline-filter">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              data-testid="timeline-filter"
+              onClick={() => console.log('Filter functionality coming soon')}
+            >
               Filter
             </Button>
-            <Button size="sm" data-testid="timeline-export">
+            <Button 
+              size="sm" 
+              data-testid="timeline-export"
+              onClick={() => console.log('Export functionality coming soon')}
+            >
               Export
             </Button>
           </div>
@@ -124,7 +133,15 @@ export default function Timeline({ timeline, onEventClick }: TimelineProps) {
                               High Priority
                             </Badge>
                           )}
-                          <Button variant="link" className="text-xs p-0 h-auto" data-testid={`event-${event.id}-details`}>
+                          <Button 
+                            variant="link" 
+                            className="text-xs p-0 h-auto" 
+                            data-testid={`event-${event.id}-details`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onEventClick(event);
+                            }}
+                          >
                             View details
                           </Button>
                         </div>

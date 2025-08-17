@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TimelineEvent, ChatMessage } from "@/lib/types";
@@ -35,6 +35,9 @@ export default function ConversationModal({ isOpen, onClose, event, messages }: 
             <Calendar className="h-5 w-5" />
             <span>Conversation Detail</span>
           </DialogTitle>
+          <DialogDescription>
+            View detailed conversation context and related messages for this health journey event.
+          </DialogDescription>
         </DialogHeader>
         
         <div className="max-h-96 overflow-y-auto">
@@ -124,7 +127,10 @@ export default function ConversationModal({ isOpen, onClose, event, messages }: 
             <Button variant="outline" onClick={onClose} data-testid="close-modal">
               Close
             </Button>
-            <Button data-testid="view-full-context">
+            <Button 
+              data-testid="view-full-context"
+              onClick={() => console.log('Full context view coming soon')}
+            >
               View Full Context
             </Button>
           </div>

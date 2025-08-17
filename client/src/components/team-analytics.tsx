@@ -42,7 +42,12 @@ export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyti
               </div>
             ))}
 
-            <Button variant="outline" className="w-full text-sm" data-testid="view-all-team-members">
+            <Button 
+              variant="outline" 
+              className="w-full text-sm" 
+              data-testid="view-all-team-members"
+              onClick={() => console.log('Team members view coming soon')}
+            >
               View all team members
             </Button>
           </div>
@@ -77,7 +82,12 @@ export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyti
                   <div className="text-xs text-slate-600 mb-2">
                     {decision.reasoning}
                   </div>
-                  <Button variant="link" className="text-xs p-0 h-auto" data-testid={`decision-${decision.id}-why`}>
+                  <Button 
+                    variant="link" 
+                    className="text-xs p-0 h-auto" 
+                    data-testid={`decision-${decision.id}-why`}
+                    onClick={() => console.log(`Decision reasoning: ${decision.reasoning}`)}
+                  >
                     Why this decision?
                   </Button>
                 </div>
