@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Health Journey</title>
+</head>
+<body>
+    <h1>Health Journey Debug</h1>
+    <div id="test-output"></div>
+    
+    <script>
+        fetch('/api/chat-data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('test-output').innerHTML = 
+                    '<h2>API Working!</h2><p>Data length: ' + data.data.length + ' characters</p>';
+            })
+            .catch(error => {
+                document.getElementById('test-output').innerHTML = 
+                    '<h2>API Error:</h2><p>' + error.message + '</p>';
+            });
+    </script>
+</body>
+</html>

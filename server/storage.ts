@@ -66,14 +66,19 @@ export class MemStorage implements IStorage {
 
   async createHealthJourney(insertJourney: InsertHealthJourney): Promise<HealthJourney> {
     const id = randomUUID();
-    const journey: HealthJourney = { ...insertJourney, id, createdAt: new Date() };
+    const journey: HealthJourney = { 
+      ...insertJourney, 
+      id, 
+      createdAt: new Date(),
+      endDate: insertJourney.endDate || null
+    };
     this.healthJourneys.set(insertJourney.memberId, journey);
     return journey;
   }
 
   async getChatData(): Promise<string> {
     try {
-      const chatPath = path.resolve(process.cwd(), "attached_assets", "chat_1755432754104.txt");
+      const chatPath = path.resolve(process.cwd(), "assets", "8_month_chat.txt");
       return await fs.promises.readFile(chatPath, "utf-8");
     } catch (error) {
       console.error("Error reading chat file:", error);

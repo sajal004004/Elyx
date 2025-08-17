@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Search, Bell, Heart } from "lucide-react";
+import { Search, Bell} from "lucide-react";
 import { ChatParser } from "@/lib/chat-parser";
 import HealthMetrics from "@/components/health-metrics";
 import Timeline from "@/components/timeline";
@@ -71,10 +71,13 @@ export default function Dashboard() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <Heart className="h-4 w-4 text-white" />
+                <div className="flex items-center space-x-2">
+                  <img 
+                    src="/src/assets/logos/elyx-logo-with-text.png" 
+                    alt="Elyx Health" 
+                    className="h-8 w-auto"
+                  />
                 </div>
-                <span className="text-xl font-bold text-slate-900">Elyx Health</span>
               </div>
               <div className="hidden md:flex items-center space-x-1 text-sm text-slate-500">
                 <span>Member Dashboard</span>

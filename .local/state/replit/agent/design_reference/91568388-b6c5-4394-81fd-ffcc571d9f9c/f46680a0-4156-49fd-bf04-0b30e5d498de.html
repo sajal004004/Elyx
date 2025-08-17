@@ -1,0 +1,604 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan Patel Health Journey - Elyx Healthcare Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'medical-blue': '#2563EB',
+                        'medical-blue-dark': '#1E40AF',
+                        'health-green': '#059669',
+                        'health-green-light': '#10B981',
+                        'medical-red': '#DC2626',
+                        'accent-purple': '#8B5CF6'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 font-inter text-slate-700">
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-medical-blue rounded-lg flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold text-slate-900">Elyx Health</span>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1 text-sm text-slate-500">
+                        <span>Member Dashboard</span>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                        <span class="font-medium text-slate-700">Rohan Patel (M001)</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search conversations..." class="w-64 px-4 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-medical-blue focus:border-transparent">
+                        <i class="fas fa-search absolute right-3 top-2.5 text-slate-400 text-sm"></i>
+                    </div>
+                    <button class="p-2 hover:bg-slate-100 rounded-lg">
+                        <i class="fas fa-bell text-slate-500"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Member Profile Header -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+            <div class="flex items-start justify-between">
+                <div class="flex items-center space-x-6">
+                    <!-- Profile image placeholder showing a professional businessman in a suit -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150" alt="Rohan Patel profile" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg">
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-900 mb-1">Rohan Patel</h1>
+                        <p class="text-slate-600 mb-2">Member ID: M001 | 8-Month Health Journey</p>
+                        <div class="flex items-center space-x-4 text-sm">
+                            <span class="bg-health-green/10 text-health-green px-3 py-1 rounded-full font-medium">
+                                <i class="fas fa-check-circle mr-1"></i>Active Program
+                            </span>
+                            <span class="text-slate-500">Jan 2025 - Aug 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-slate-500 mb-1">Transformation Status</div>
+                    <div class="text-lg font-semibold text-health-green">Health Optimization Advocate</div>
+                    <div class="text-sm text-slate-600 mt-1">From: Stressed Executive</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-slate-600">Blood Pressure</h3>
+                    <i class="fas fa-heart text-medical-red"></i>
+                </div>
+                <div class="text-2xl font-bold text-slate-900 mb-1">125/78</div>
+                <div class="text-sm text-health-green flex items-center">
+                    <i class="fas fa-arrow-down mr-1"></i>
+                    20 points improvement
+                </div>
+                <div class="text-xs text-slate-500 mt-1">From 145/92 in Jan</div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-slate-600">LDL Cholesterol</h3>
+                    <i class="fas fa-chart-line text-health-green"></i>
+                </div>
+                <div class="text-2xl font-bold text-slate-900 mb-1">95 mg/dL</div>
+                <div class="text-sm text-health-green flex items-center">
+                    <i class="fas fa-arrow-down mr-1"></i>
+                    70 points reduction
+                </div>
+                <div class="text-xs text-slate-500 mt-1">From 165 mg/dL in Jan</div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-slate-600">Recovery Score</h3>
+                    <i class="fas fa-bed text-accent-purple"></i>
+                </div>
+                <div class="text-2xl font-bold text-slate-900 mb-1">74%</div>
+                <div class="text-sm text-health-green flex items-center">
+                    <i class="fas fa-arrow-up mr-1"></i>
+                    32% improvement
+                </div>
+                <div class="text-xs text-slate-500 mt-1">From 42% baseline</div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-medium text-slate-600">Team Hours</h3>
+                    <i class="fas fa-users text-medical-blue"></i>
+                </div>
+                <div class="text-2xl font-bold text-slate-900 mb-1">52</div>
+                <div class="text-sm text-slate-600 flex items-center">
+                    <i class="fas fa-user-md mr-1"></i>
+                    7 specialists
+                </div>
+                <div class="text-xs text-slate-500 mt-1">238 total messages</div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Timeline Section (Main) -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200">
+                    <div class="p-6 border-b border-slate-200">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-xl font-bold text-slate-900">8-Month Health Journey Timeline</h2>
+                            <div class="flex items-center space-x-2">
+                                <button class="px-3 py-1 text-sm border border-slate-300 rounded-lg hover:bg-slate-50">Filter</button>
+                                <button class="px-3 py-1 text-sm bg-medical-blue text-white rounded-lg hover:bg-medical-blue-dark">Export</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <!-- Timeline Navigation -->
+                        <div class="flex space-x-1 mb-6 bg-slate-100 p-1 rounded-lg">
+                            <button class="timeline-tab active px-4 py-2 text-sm font-medium rounded-md bg-white text-medical-blue shadow-sm" data-month="1">Jan</button>
+                            <button class="timeline-tab px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-white" data-month="2">Feb</button>
+                            <button class="timeline-tab px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-white" data-month="3">Mar</button>
+                            <button class="timeline-tab px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-white" data-month="4">Apr</button>
+                            <button class="timeline-tab px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-white" data-month="5">May</button>
+                            <button class="timeline-tab px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-white" data-month="6">Jun</button>
+                            <button class="timeline-tab px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-white" data-month="7">Jul</button>
+                            <button class="timeline-tab px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-white" data-month="8">Aug</button>
+                        </div>
+
+                        <!-- Timeline Content -->
+                        <div id="timeline-content">
+                            <!-- Month 1 Content (Default Active) -->
+                            <div class="timeline-month active" data-month="1">
+                                <div class="mb-4">
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-2">January 2025: Initial Onboarding & Assessment</h3>
+                                    <p class="text-slate-600 text-sm">Foundation building phase with comprehensive health assessment and team introductions.</p>
+                                </div>
+                                
+                                <!-- Key Events -->
+                                <div class="space-y-4">
+                                    <div class="timeline-event p-4 border border-slate-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer" data-conversation="jan-3-onboarding">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-2 h-2 bg-medical-blue rounded-full mt-2"></div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center justify-between mb-1">
+                                                    <span class="text-sm font-medium text-slate-900">Initial Onboarding</span>
+                                                    <span class="text-xs text-slate-500">Jan 3, 9:15 AM</span>
+                                                </div>
+                                                <p class="text-sm text-slate-600 mb-2">Rohan joins Elyx with concerns about high BP and cognitive performance. Ruby introduces team structure.</p>
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded">Ruby (Concierge)</span>
+                                                    <button class="text-xs text-medical-blue hover:underline">Why this decision?</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-event p-4 border border-slate-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer" data-conversation="jan-15-assessment">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-2 h-2 bg-medical-red rounded-full mt-2"></div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center justify-between mb-1">
+                                                    <span class="text-sm font-medium text-slate-900">Health Assessment Results</span>
+                                                    <span class="text-xs text-slate-500">Jan 15, 11:30 AM</span>
+                                                </div>
+                                                <p class="text-sm text-slate-600 mb-2">BP elevated at 145/92, confirming cardiovascular concerns. Blood work scheduled.</p>
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded">Dr. Warren (Medical)</span>
+                                                    <button class="text-xs text-medical-blue hover:underline">View conversation</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-event p-4 border border-slate-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer" data-conversation="jan-18-results">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-2 h-2 bg-accent-purple rounded-full mt-2"></div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center justify-between mb-1">
+                                                    <span class="text-sm font-medium text-slate-900">Blood Work Analysis</span>
+                                                    <span class="text-xs text-slate-500">Jan 18, 3:45 PM</span>
+                                                </div>
+                                                <p class="text-sm text-slate-600 mb-2">LDL at 165 mg/dL, CRP elevated at 4.2. Aggressive lifestyle intervention recommended over medication.</p>
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">Dr. Warren (Medical)</span>
+                                                    <button class="text-xs text-medical-blue hover:underline">Decision reasoning</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Month Summary -->
+                                <div class="mt-6 p-4 bg-slate-50 rounded-lg">
+                                    <h4 class="font-medium text-slate-900 mb-2">Month Summary</h4>
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        <div>
+                                            <span class="text-slate-600">Key Challenges:</span>
+                                            <p class="text-slate-900">Elevated BP, travel jet lag, overwhelming protocol changes</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-slate-600">Major Wins:</span>
+                                            <p class="text-slate-900">Team onboarding complete, baseline metrics established, Whoop integration</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Month 2 Content (Hidden by default) -->
+                            <div class="timeline-month hidden" data-month="2">
+                                <div class="mb-4">
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-2">February 2025: Protocol Implementation & Travel Testing</h3>
+                                    <p class="text-slate-600 text-sm">First month of active protocol implementation with successful travel optimization to London.</p>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="timeline-event p-4 border border-slate-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-2 h-2 bg-health-green rounded-full mt-2"></div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center justify-between mb-1">
+                                                    <span class="text-sm font-medium text-slate-900">London Travel Protocol Success</span>
+                                                    <span class="text-xs text-slate-500">Feb 13, 8:00 AM</span>
+                                                </div>
+                                                <p class="text-sm text-slate-600 mb-2">Woke up at 6 AM London time naturally - protocol worked! Usually takes 3-4 days to adjust.</p>
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Advik (Performance)</span>
+                                                    <button class="text-xs text-medical-blue hover:underline">View protocol details</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 p-4 bg-slate-50 rounded-lg">
+                                    <h4 class="font-medium text-slate-900 mb-2">Month Summary</h4>
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        <div>
+                                            <span class="text-slate-600">Key Achievements:</span>
+                                            <p class="text-slate-900">Recovery scores up to 58%, travel protocol validated, Zone 2 cardio established</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-slate-600">Team Integration:</span>
+                                            <p class="text-slate-900">Dr. Evans added for stress management, Rachel joins for physical training</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional months would be structured similarly -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Content -->
+            <div class="space-y-6">
+                <!-- Team Analytics -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-4">Care Team Analytics</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-medical-blue rounded-full flex items-center justify-center text-white text-xs font-medium">RU</div>
+                                <div>
+                                    <div class="text-sm font-medium text-slate-900">Ruby</div>
+                                    <div class="text-xs text-slate-500">Concierge</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-slate-900">48 msgs</div>
+                                <div class="text-xs text-slate-500">12.5 hrs</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-medical-red rounded-full flex items-center justify-center text-white text-xs font-medium">DW</div>
+                                <div>
+                                    <div class="text-sm font-medium text-slate-900">Dr. Warren</div>
+                                    <div class="text-xs text-slate-500">Medical</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-slate-900">32 msgs</div>
+                                <div class="text-xs text-slate-500">8.2 hrs</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-accent-purple rounded-full flex items-center justify-center text-white text-xs font-medium">AD</div>
+                                <div>
+                                    <div class="text-sm font-medium text-slate-900">Advik</div>
+                                    <div class="text-xs text-slate-500">Performance</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-slate-900">41 msgs</div>
+                                <div class="text-xs text-slate-500">10.8 hrs</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-health-green rounded-full flex items-center justify-center text-white text-xs font-medium">CA</div>
+                                <div>
+                                    <div class="text-sm font-medium text-slate-900">Carla</div>
+                                    <div class="text-xs text-slate-500">Nutrition</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-slate-900">28 msgs</div>
+                                <div class="text-xs text-slate-500">6.5 hrs</div>
+                            </div>
+                        </div>
+
+                        <button class="w-full text-sm text-medical-blue hover:underline mt-2">View all team members</button>
+                    </div>
+                </div>
+
+                <!-- Recent Decisions -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-4">Recent Key Decisions</h3>
+                    <div class="space-y-3">
+                        <div class="p-3 border-l-4 border-health-green bg-green-50 rounded-r-lg">
+                            <div class="text-sm font-medium text-slate-900 mb-1">Lifestyle Over Medication</div>
+                            <div class="text-xs text-slate-600 mb-2">Aggressive lifestyle intervention chosen over statins for cholesterol management</div>
+                            <button class="text-xs text-medical-blue hover:underline">Why this decision?</button>
+                        </div>
+
+                        <div class="p-3 border-l-4 border-accent-purple bg-purple-50 rounded-r-lg">
+                            <div class="text-sm font-medium text-slate-900 mb-1">Whoop Integration</div>
+                            <div class="text-xs text-slate-600 mb-2">Upgraded to Whoop for more detailed autonomic nervous system tracking</div>
+                            <button class="text-xs text-medical-blue hover:underline">View reasoning</button>
+                        </div>
+
+                        <div class="p-3 border-l-4 border-medical-blue bg-blue-50 rounded-r-lg">
+                            <div class="text-sm font-medium text-slate-900 mb-1">Travel Protocol Development</div>
+                            <div class="text-xs text-slate-600 mb-2">Custom jet lag mitigation strategy for frequent business travel</div>
+                            <button class="text-xs text-medical-blue hover:underline">See protocol</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Metrics Chart -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-4">Key Metrics Trend</h3>
+                    <div class="h-48">
+                        <canvas id="metricsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversation Modal -->
+        <div id="conversationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
+                <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-slate-900">Conversation Detail</h3>
+                    <button id="closeModal" class="text-slate-500 hover:text-slate-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6 max-h-96 overflow-y-auto">
+                    <div id="conversationContent">
+                        <!-- Dynamic conversation content will be loaded here -->
+                    </div>
+                </div>
+                <div class="p-6 border-t border-slate-200 bg-slate-50">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-slate-600">Decision Impact Analysis</span>
+                        <button class="px-4 py-2 bg-medical-blue text-white rounded-lg text-sm hover:bg-medical-blue-dark">
+                            View Full Context
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        (() => {
+            // Timeline navigation functionality
+            const timelineTabs = document.querySelectorAll('.timeline-tab');
+            const timelineMonths = document.querySelectorAll('.timeline-month');
+
+            timelineTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const monthNumber = tab.dataset.month;
+                    
+                    // Update active tab
+                    timelineTabs.forEach(t => {
+                        t.classList.remove('active', 'bg-white', 'text-medical-blue', 'shadow-sm');
+                        t.classList.add('text-slate-600', 'hover:bg-white');
+                    });
+                    tab.classList.add('active', 'bg-white', 'text-medical-blue', 'shadow-sm');
+                    tab.classList.remove('text-slate-600', 'hover:bg-white');
+
+                    // Update visible month content
+                    timelineMonths.forEach(month => {
+                        month.classList.add('hidden');
+                        month.classList.remove('active');
+                    });
+                    
+                    const targetMonth = document.querySelector(`.timeline-month[data-month="${monthNumber}"]`);
+                    if (targetMonth) {
+                        targetMonth.classList.remove('hidden');
+                        targetMonth.classList.add('active');
+                    }
+                });
+            });
+
+            // Conversation modal functionality
+            const modal = document.getElementById('conversationModal');
+            const closeModal = document.getElementById('closeModal');
+            const conversationEvents = document.querySelectorAll('.timeline-event');
+
+            conversationEvents.forEach(event => {
+                event.addEventListener('click', () => {
+                    const conversationId = event.dataset.conversation;
+                    // TODO: Load actual conversation data based on conversationId
+                    showConversationModal(conversationId);
+                });
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+
+            function showConversationModal(conversationId) {
+                // TODO: Replace with actual conversation data fetching
+                const mockConversations = {
+                    'jan-3-onboarding': {
+                        title: 'Initial Onboarding Conversation',
+                        messages: [
+                            {
+                                sender: 'Rohan',
+                                time: '9:15 AM',
+                                message: 'Hi Ruby, I\'m Rohan Patel. Just signed up with Elyx. My main concerns are managing my high BP (family history of heart disease) and optimizing my cognitive performance for work. I travel frequently and need a sustainable approach.'
+                            },
+                            {
+                                sender: 'Ruby (Elyx Concierge)',
+                                time: '9:23 AM',
+                                message: 'Hi Rohan! Welcome to Elyx. I\'m Ruby, your primary concierge. I\'ve reviewed your intake form. Dr. Warren will be your lead physician for cardiovascular health. Let\'s start with scheduling your comprehensive health assessment.'
+                            }
+                        ]
+                    }
+                };
+
+                const conversation = mockConversations[conversationId] || {
+                    title: 'Conversation Detail',
+                    messages: [
+                        {
+                            sender: 'System',
+                            time: 'N/A',
+                            message: 'Conversation data not found.'
+                        }
+                    ]
+                };
+
+                const content = document.getElementById('conversationContent');
+                content.innerHTML = `
+                    <h4 class="font-medium text-slate-900 mb-4">${conversation.title}</h4>
+                    <div class="space-y-4">
+                        ${conversation.messages.map(msg => `
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-medium">
+                                    ${msg.sender.charAt(0)}
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="text-sm font-medium text-slate-900">${msg.sender}</span>
+                                        <span class="text-xs text-slate-500">${msg.time}</span>
+                                    </div>
+                                    <p class="text-sm text-slate-700">${msg.message}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                modal.classList.remove('hidden');
+            }
+
+            // Initialize health metrics chart
+            const ctx = document.getElementById('metricsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                    datasets: [
+                        {
+                            label: 'Blood Pressure (Systolic)',
+                            data: [145, 142, 138, 135, 132, 128, 126, 125],
+                            borderColor: '#DC2626',
+                            backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Recovery Score (%)',
+                            data: [42, 58, 52, 65, 68, 71, 73, 74],
+                            borderColor: '#8B5CF6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'LDL Cholesterol',
+                            data: [165, 158, 142, 128, 115, 108, 98, 95],
+                            borderColor: '#059669',
+                            backgroundColor: 'rgba(5, 150, 105, 0.1)',
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Search functionality
+            const searchInput = document.querySelector('input[placeholder="Search conversations..."]');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                // TODO: Implement actual search functionality across conversations
+                console.log('Searching for:', searchTerm);
+            });
+        })();
+    </script>
+</body>
+</html>

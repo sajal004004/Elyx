@@ -64,7 +64,7 @@ npm install
 npm run dev
 ```
 
-The application will be available at `http://localhost:5000`
+The application will be available at `http://localhost:3000`
 
 ## Project Structure
 
@@ -80,7 +80,7 @@ The application will be available at `http://localhost:5000`
 │   ├── routes.ts         # API routes
 │   └── storage.ts        # Data storage interface
 ├── shared/               # Shared types and schemas
-└── attached_assets/      # Original chat data files
+└── assets/      # Original chat data file and prompts used
 ```
 
 ## Key Components
@@ -141,10 +141,3 @@ The application processes real chat conversation data from Rohan Patel's 8-month
 - **July**: Continuous monitoring and optimization
 - **August**: Results analysis and future planning
 
-## Contributing
-
-This project demonstrates the power of AI-assisted healthcare coordination. Contributions that enhance the visualization capabilities or extend the chat parsing functionality are welcome.
-
-## License
-
-This project is for demonstration purposes, showcasing modern healthcare technology integration.
