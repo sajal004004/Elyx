@@ -1,4 +1,4 @@
-# Health Journey Visualization App
+#  Elyx Health Journey Visualization 
 
 A comprehensive web application that visualizes Rohan Patel's 8-month health transformation journey with Elyx healthcare service. This app demonstrates how AI collaborates with medical professionals to provide personalized healthcare through interactive dashboards, timeline visualization, and conversation analysis.
 
@@ -80,7 +80,7 @@ The application will be available at `http://localhost:3000`
 │   ├── routes.ts         # API routes
 │   └── storage.ts        # Data storage interface
 ├── shared/               # Shared types and schemas
-└── assets/      # Original chat data file and prompts used
+└── assets/      # 8_month_chat data file and prompts used to generate chat and create website
 ```
 
 ## Key Components
