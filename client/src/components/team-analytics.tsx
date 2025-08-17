@@ -89,13 +89,32 @@ export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyti
                   </div>
                   <Button 
                     variant="link" 
-                    className="text-xs p-0 h-auto" 
+                    className="text-xs p-2 h-auto text-blue-600 hover:text-blue-800 underline hover:bg-blue-50 rounded" 
                     data-testid={`decision-${decision.id}-why`}
+                    style={{ position: 'relative', zIndex: 10 }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       console.log(`Decision reasoning: ${decision.reasoning}`);
-                      alert(`Decision reasoning: ${decision.reasoning}`);
+                      // Use a more visible notification instead of alert
+                      const modal = document.createElement('div');
+                      modal.style.cssText = `
+                        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                        background: white; padding: 20px; border-radius: 8px; 
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 9999;
+                        max-width: 500px; border: 2px solid #3b82f6;
+                      `;
+                      modal.innerHTML = `
+                        <h3 style="margin: 0 0 10px 0; color: #1f2937;">Decision Reasoning</h3>
+                        <p style="margin: 0 0 15px 0; color: #4b5563;">${decision.reasoning}</p>
+                        <button onclick="this.parentElement.remove()" 
+                                style="background: #3b82f6; color: white; border: none; 
+                                       padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                          Close
+                        </button>
+                      `;
+                      document.body.appendChild(modal);
+                      setTimeout(() => modal.remove(), 5000);
                     }}
                   >
                     Why this decision?
