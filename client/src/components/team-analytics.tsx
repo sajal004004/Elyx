@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { TeamMember, KeyDecision } from "@/lib/types";
 
 interface TeamAnalyticsProps {
@@ -8,6 +10,14 @@ interface TeamAnalyticsProps {
 }
 
 export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyticsProps) {
+  const [selectedDecision, setSelectedDecision] = useState<KeyDecision | null>(null);
+  const [isDecisionModalOpen, setIsDecisionModalOpen] = useState(false);
+
+  const handleDecisionClick = (decision: KeyDecision) => {
+    setSelectedDecision(decision);
+    setIsDecisionModalOpen(true);
+  };
+
   return (
     <div className="space-y-6">
       {/* Care Team Analytics */}
@@ -91,30 +101,11 @@ export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyti
                     variant="link" 
                     className="text-xs p-2 h-auto text-blue-600 hover:text-blue-800 underline hover:bg-blue-50 rounded" 
                     data-testid={`decision-${decision.id}-why`}
-                    style={{ position: 'relative', zIndex: 10 }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       console.log(`Decision reasoning: ${decision.reasoning}`);
-                      // Use a more visible notification instead of alert
-                      const modal = document.createElement('div');
-                      modal.style.cssText = `
-                        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-                        background: white; padding: 20px; border-radius: 8px; 
-                        box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 9999;
-                        max-width: 500px; border: 2px solid #3b82f6;
-                      `;
-                      modal.innerHTML = `
-                        <h3 style="margin: 0 0 10px 0; color: #1f2937;">Decision Reasoning</h3>
-                        <p style="margin: 0 0 15px 0; color: #4b5563;">${decision.reasoning}</p>
-                        <button onclick="this.parentElement.remove()" 
-                                style="background: #3b82f6; color: white; border: none; 
-                                       padding: 8px 16px; border-radius: 4px; cursor: pointer;">
-                          Close
-                        </button>
-                      `;
-                      document.body.appendChild(modal);
-                      setTimeout(() => modal.remove(), 5000);
+                      handleDecisionClick(decision);
                     }}
                   >
                     Why this decision?
@@ -125,6 +116,44 @@ export default function TeamAnalytics({ teamMembers, keyDecisions }: TeamAnalyti
           </div>
         </CardContent>
       </Card>
+
+      {/* Decision Reasoning Modal */}
+      <Dialog open={isDecisionModalOpen} onOpenChange={setIsDecisionModalOpen}>
+        <DialogContent className="max-w-md" data-testid="decision-reasoning-modal">
+          <DialogHeader>
+            <DialogTitle>Why This Decision?</DialogTitle>
+            <DialogDescription>
+              Understanding the reasoning behind this healthcare decision.
+            </DialogDescription>
+          </DialogHeader>
+          
+          {selectedDecision && (
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-medium text-slate-900 mb-2">{selectedDecision.title}</h4>
+                <p className="text-sm text-slate-600 mb-3">{selectedDecision.description}</p>
+              </div>
+              
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h5 className="font-medium text-blue-900 mb-2">Reasoning:</h5>
+                <p className="text-sm text-blue-800">{selectedDecision.reasoning}</p>
+              </div>
+              
+              <div className="text-xs text-slate-500">
+                Decision made by: {selectedDecision.teamMember}
+              </div>
+              
+              <Button 
+                onClick={() => setIsDecisionModalOpen(false)}
+                className="w-full"
+                data-testid="close-decision-modal"
+              >
+                Got it
+              </Button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
